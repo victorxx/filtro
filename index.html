@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+
+    </head>
+    <body>
+  <input type="text" id="nome" placeholder="Digite um nome" />
+  <button onclick="adicionar()">Adicionar</button>
+  <ul id="lista"></ul>
+  <script>
+    let nomes=[];
+   
+    function adicionar(){
+         let nome=document.getElementById('nome').value.trim();
+         if(nome==='') return;
+         nomes.push(nome);
+         document.getElementById('nome').value='';
+         renderizar();
+
+    }
+    function remover(index){
+        if(nomes[index]==="victorsaib"){
+            alert('não é posível remover esse usuário');
+        }
+        nomes.splice(index,1);
+        renderizar();
+        
+    }
+        function renderizar() {
+      const ul = document.getElementById("lista");
+      ul.innerHTML = "";
+      nomes.forEach((nome, i) => {
+        const li = document.createElement("li");
+        li.innerHTML = `${nome} <button onclick="remover(${i})">Remover</button>`;
+        ul.appendChild(li);
+      });
+      
+    }
+
+  </script>
+    </body>
+</html>
